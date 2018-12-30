@@ -19,6 +19,22 @@
 
 #include <conf_board.h>
 
+#define SHIFT_DS_1		IOPORT_CREATE_PIN(PORTC, 0U)	//SER4
+#define SHIFT_SHCP_1 	IOPORT_CREATE_PIN(PORTC, 2U)	//SRCLK
+#define SHIFT_STCP_1 	IOPORT_CREATE_PIN(PORTC, 1U)	//RCLK
+#define SHIFT_PORT_1 	PORTC
+
+#define SHIFT_DS_2 		IOPORT_CREATE_PIN(PORTC, 3U)	//SER
+#define SHIFT_SHCP_2 	IOPORT_CREATE_PIN(PORTC, 5U)	//SRCLK
+#define SHIFT_STCP_2 	IOPORT_CREATE_PIN(PORTC, 4U)	//RCLK
+#define SHIFT_PORT_2	PORTC
+
+#define CUBE_LVL_1 		IOPORT_CREATE_PIN(PORTD, 0U)
+#define CUBE_LVL_2 		IOPORT_CREATE_PIN(PORTD, 1U)
+#define CUBE_LVL_3 		IOPORT_CREATE_PIN(PORTD, 2U)
+#define CUBE_LVL_4 		IOPORT_CREATE_PIN(PORTD, 3U)
+#define CUBE_LYR_PORT	PORTD
+
 // External oscillator settings.
 // Uncomment and set correct values if external oscillator is used.
 
