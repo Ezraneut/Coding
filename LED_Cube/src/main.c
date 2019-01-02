@@ -80,49 +80,49 @@ void shift_out_16(uint16_t p, uint16_t layer);
 void testShiftReg();
 
 void init_TIM0INT();
-#if defined(ATMEGA2560)
-#define CUBE_LYR_PORT	PORTA
-#define SHIFT_DS_1 		(0U) //SER
-#define SHIFT_SHCP_1 	(1U) //SRCLK
-#define SHIFT_STCP_1 	(2U) //RCLK
-#define SHIFT_PORT_1 	PORTL
+//#if defined(ATMEGA2560)
+//#define CUBE_LYR_PORT	PORTA
+//#define SHIFT_DS_1 		(0U) //SER
+//#define SHIFT_SHCP_1 	(1U) //SRCLK
+//#define SHIFT_STCP_1 	(2U) //RCLK
+//#define SHIFT_PORT_1 	PORTL
+//
+//#define SHIFT_DS_2 		(3U) //SER
+//#define SHIFT_SHCP_2 	(4U) //SRCLK
+//#define SHIFT_STCP_2 	(5U) //RCLK
+//#define SHIFT_PORT_2	PORTL
+//
+//#define CUBE_LVL_1 		(0U)
+//#define CUBE_LVL_2 		(1U)
+//#define CUBE_LVL_3 		(2U)
+//#define CUBE_LVL_4 		(3U)
+//#define CUBE_LYR_PORT	PORTA
+//#elif defined(ATMEGA8A)
+//#define SHIFT_DS_1 		(0U) //SER
+//#define SHIFT_SHCP_1 	(2U) //SRCLK
+//#define SHIFT_STCP_1 	(1U) //RCLK
+//#define SHIFT_PORT_1 	PORTC
+//
+//#define SHIFT_DS_2 		(3U) //SER
+//#define SHIFT_SHCP_2 	(5U) //SRCLK
+//#define SHIFT_STCP_2 	(4U) //RCLK
+//#define SHIFT_PORT_2	PORTC
+//
+//#define CUBE_LVL_1 		(0U)
+//#define CUBE_LVL_2 		(1U)
+//#define CUBE_LVL_3 		(2U)
+//#define CUBE_LVL_4 		(3U)
+//#define CUBE_LYR_PORT	PORTD
+//#endif
 
-#define SHIFT_DS_2 		(3U) //SER
-#define SHIFT_SHCP_2 	(4U) //SRCLK
-#define SHIFT_STCP_2 	(5U) //RCLK
-#define SHIFT_PORT_2	PORTL
-
-#define CUBE_LVL_1 		(0U)
-#define CUBE_LVL_2 		(1U)
-#define CUBE_LVL_3 		(2U)
-#define CUBE_LVL_4 		(3U)
-#define CUBE_LYR_PORT	PORTA
-#elif defined(ATMEGA8A)
-#define SHIFT_DS_1 		(0U) //SER
-#define SHIFT_SHCP_1 	(2U) //SRCLK
-#define SHIFT_STCP_1 	(1U) //RCLK
-#define SHIFT_PORT_1 	PORTC
-
-#define SHIFT_DS_2 		(3U) //SER
-#define SHIFT_SHCP_2 	(5U) //SRCLK
-#define SHIFT_STCP_2 	(4U) //RCLK
-#define SHIFT_PORT_2	PORTC
-
-#define CUBE_LVL_1 		(0U)
-#define CUBE_LVL_2 		(1U)
-#define CUBE_LVL_3 		(2U)
-#define CUBE_LVL_4 		(3U)
-#define CUBE_LYR_PORT	PORTD
-#endif
-
-#define DATA_OUT_HIGH_1()	SHIFT_PORT_1 |= (_BV(SHIFT_DS_1))
-#define DATA_OUT_LOW_1()	SHIFT_PORT_1 &=(~(_BV(SHIFT_DS_1)))
-#define SHIFT_PULSE_1()		SHIFT_PORT_1 |= (_BV(SHIFT_SHCP_1));\
-							SHIFT_PORT_1 &= (~(_BV(SHIFT_SHCP_1)))
-#define DATA_OUT_HIGH_2()	SHIFT_PORT_2 |= (1<<SHIFT_DS_2)
-#define DATA_OUT_LOW_2()	SHIFT_PORT_2 &= (~(1<<SHIFT_DS_2))
-#define SHIFT_PULSE_2()		SHIFT_PORT_2 |= (1<<SHIFT_SHCP_2);\
-							SHIFT_PORT_2 &= (~(1<<SHIFT_SHCP_2));
+//#define DATA_OUT_HIGH_1()	SHIFT_PORT_1 |= (_BV(SHIFT_DS_1))
+//#define DATA_OUT_LOW_1()	SHIFT_PORT_1 &=(~(_BV(SHIFT_DS_1)))
+//#define SHIFT_PULSE_1()		SHIFT_PORT_1 |= (_BV(SHIFT_SHCP_1));\
+							//SHIFT_PORT_1 &= (~(_BV(SHIFT_SHCP_1)))
+//#define DATA_OUT_HIGH_2()	SHIFT_PORT_2 |= (1<<SHIFT_DS_2)
+//#define DATA_OUT_LOW_2()	SHIFT_PORT_2 &= (~(1<<SHIFT_DS_2))
+//#define SHIFT_PULSE_2()		SHIFT_PORT_2 |= (1<<SHIFT_SHCP_2);\
+							//SHIFT_PORT_2 &= (~(1<<SHIFT_SHCP_2));
 
 #define cube_layers 4
 
@@ -150,6 +150,7 @@ uint8_t buffer_index = 0;
 
 ISR(TIMER0_OVF_vect)
 {
+	
     PORTD ^= _BV(7);
 
     shift_out = true;
@@ -164,6 +165,7 @@ ISR(TIMER0_OVF_vect)
 
 int main()
 {
+	board_init();
     //DDRA |= 0xFF;
     //DDRL |= 0xFF;
     DDRB |= 0xFF;
