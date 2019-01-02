@@ -55,8 +55,14 @@
 // From module: Common build items for user board support templates
 #include <user_board.h>
 
+// From module: GPIO - General purpose Input/Output
+#include <gpio.h>
+
 // From module: Generic board support
 #include <board.h>
+
+// From module: IOPORT - General purpose I/O service
+#include <ioport.h>
 
 // From module: Interrupt management - megaAVR implementation
 #include <interrupt.h>
